@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Estrella 💫</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+}
+
+h1 {
+    margin-top: 100px;
+    font-size: 36px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    animation: latido 1.5s infinite;
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 40px;
+    background: gold;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ffd700;
+}
+
+img {
+    margin-top: 30px;
+    width: 280px;
+    border-radius: 20px;
+    display: none;
+    box-shadow: 0px 15px 40px rgba(0,0,0,0.6);
+    animation: aparecer 1s ease-in-out;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Estrellas cayendo */
+.estrella {
+    position: absolute;
+    top: -10px;
+    color: white;
+    font-size: 20px;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    to {
+        transform: translateY(110vh);
+    }
+}
+</style>
+
+</head>
+<body>
+
+<h1>Contigo elegí un para siempre, mi estrella 💫</h1>
+
+<button onclick="mostrarFoto()">Presiona aquí 💍</button>
+
+<br>
+<img id="foto" src="selfie.jpg" alt="Nuestra foto">
+
+<script>
+function mostrarFoto() {
+    document.getElementById("foto").style.display = "block";
+}
+
+// Crear estrellas
+function crearEstrella() {
+    const estrella = document.createElement("div");
+    estrella.classList.add("estrella");
+    estrella.innerHTML = "✨";
+    estrella.style.left = Math.random() * 100 + "vw";
+    estrella.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(estrella);
+
+    setTimeout(() => {
+        estrella.remove();
+    }, 5000);
+}
+
+setInterval(crearEstrella, 300);
+</script>
+
+</body>
+</html>
